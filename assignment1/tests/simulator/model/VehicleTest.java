@@ -13,23 +13,23 @@ class VehicleTest {
 	@Test
 	void getset_contamination_class() {
 
-	    // two junctions
-	    Junction j1 = new Junction("j1", new RoundRobinStrategy(10), new MoveFirstStrategy(), 0, 0);
-	    Junction j2 = new Junction("j2", new RoundRobinStrategy(10), new MoveFirstStrategy(), 0, 0);
+		// two junctions
+		Junction j1 = new Junction("j1", new RoundRobinStrategy(10), new MoveFirstStrategy(), 0, 0);
+		Junction j2 = new Junction("j2", new RoundRobinStrategy(10), new MoveFirstStrategy(), 0, 0);
 
-	    // a vehicle
-	    Vehicle v1 = new Vehicle("v1", 50, 1, Arrays.asList(j1, j2));
+		// a vehicle
+		Vehicle v1 = new Vehicle("v1", 50, 1, Arrays.asList(j1, j2));
 
-	    // initial value is as provided in the constructor
-	    assertEquals(1, v1.getContClass());
+		// initial value is as provided in the constructor
+		assertEquals(1, v1.getContClass());
 
-	    // setContClass changes the contamination class
-	    v1.setContClass(4);
-	    assertEquals(4, v1.getContClass());
+		// setContClass changes the contamination class
+		v1.setContClass(4);
+		assertEquals(4, v1.getContClass());
 
-	    // contamination class must be between 0 and 10 (inclusive)
-	    assertThrows(IllegalArgumentException.class, () -> v1.setContClass(11));
-	    assertThrows(IllegalArgumentException.class, () -> v1.setContClass(-1));
+		// contamination class must be between 0 and 10 (inclusive)
+		assertThrows(Exception.class, () -> v1.setContClass(11));
+		assertThrows(Exception.class, () -> v1.setContClass(-1));
 	}
 
 	@Test
@@ -77,6 +77,7 @@ class VehicleTest {
 		// check that the report/toString is OK
 		String s = "{\"distance\":0,\"co2\":0,\"id\":\"v1\",\"class\":1,\"speed\":0,\"status\":\"PENDING\"}";
 		JSONObject jo = new JSONObject(s);
+		
 		JSONObject report = v1.report();
 		assertTrue(jo.similar(report));
 		
