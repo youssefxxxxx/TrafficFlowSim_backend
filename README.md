@@ -1,7 +1,9 @@
 # Traffic Simulator
 
 **Java-based traffic simulation app** to model vehicles, roads, junctions, and events via a textual interface.
-** instructions are here :https://github.com/genaim/TP2_2425/blob/master/practicas/P2/enunciado_en.md
+
+
+**instructions are here :https://github.com/genaim/TP2_2425/blob/master/practicas/P2/enunciado_en.md.
 
 ## JSON Example
 
